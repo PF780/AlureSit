@@ -1,44 +1,270 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site do alura</title>
+  <title>Site do Alura</title>
   <link rel="stylesheet" href="reset.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Comic Neue', sans-serif;
+      scroll-behavior: smooth; /* Scroll suave */
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4; /* Cor de fundo suave */
+    }
+
+    header {
+      background-color: #4CAF50; /* Cor de fundo do cabeçalho */
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lista-menu {
+      position: relative; /* Para que o contêiner do menu se posicione corretamente */
+    }
+
+    .lista-menu__container {
+      max-height: 0; /* Inicia com altura 0 */
+      overflow-y: hidden; /* Esconde o conteúdo */
+      border: 1px solid #ccc; /* Borda ao redor da lista */
+      padding: 0 10px; /* Espaçamento interno */
+      display: none; /* Esconde a lista inicialmente */
+      position: absolute; /* Posiciona o menu em relação ao contêiner pai */
+      background-color: white; /* Fundo branco para o menu */
+      z-index: 10; /* Garante que o menu fique acima de outros elementos */
+      width: 200px; /* Largura do menu */
+      transition: max-height 0.3s ease, padding 0.3s ease; /* Transição suave */
+    }
+
+    .lista-menu__container.active {
+      display: block; /* Mostra a lista quando ativa */
+      max-height: 300px; /* Altura máxima ao abrir */
+      padding: 10px; /* Espaçamento interno ao abrir */
+      overflow-y: auto; /* Adiciona rolagem vertical */
+    }
+
+    /* Estilos do swiper */
+    .swiper {
+      width: 100%; /* Largura do carrossel */
+      height: auto; /* Altura do carrossel ajustada automaticamente */
+      min-height: 150px; /* Altura mínima do carrossel */
+      margin-top: 20px; /* Espaçamento superior */
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* Alinha o texto abaixo da imagem */
+      width: 100px; /* Largura de cada slide */
+      height: auto; /* Altura do slide ajustada automaticamente */
+      transition: transform 0.3s; /* Efeito de transformação suave */
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    }
+
+    .swiper-slide img {
+      width: 100%; /* Ajusta a imagem para preencher o slide */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 10px; /* Bordas arredondadas nas imagens */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra nas imagens */
+    }
+
+    .swiper-slide .swiper-text {
+      margin-top: 5px; /* Espaçamento acima do texto */
+      text-align: center; /* Centraliza o texto */
+      font-size: 14px; /* Tamanho da fonte do texto */
+      color: #333; /* Cor do texto */
+    }
+
+    /* Estilo para os ícones */
+    .container__imagem {
+      width: 40px; /* Ajuste a largura do ícone */
+      height: auto; /* Mantém a proporção da imagem */
+      margin-right: 10px; /* Espaçamento à direita */
+    }
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site do Alura</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Comic Neue', sans-serif;
+      scroll-behavior: smooth; /* Scroll suave */
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4; /* Cor de fundo suave */
+    }
+
+    header {
+      background-color: #4CAF50; /* Cor de fundo do cabeçalho */
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .lista-menu {
+      position: relative; /* Para que o contêiner do menu se posicione corretamente */
+    }
+
+    .lista-menu__container {
+      max-height: 0; /* Inicia com altura 0 */
+      overflow-y: hidden; /* Esconde o conteúdo */
+      border: 1px solid #ccc; /* Borda ao redor da lista */
+      padding: 0 10px; /* Espaçamento interno */
+      display: none; /* Esconde a lista inicialmente */
+      position: absolute; /* Posiciona o menu em relação ao contêiner pai */
+      background-color: white; /* Fundo branco para o menu */
+      z-index: 10; /* Garante que o menu fique acima de outros elementos */
+      width: 200px; /* Largura do menu */
+      transition: max-height 0.3s ease, padding 0.3s ease; /* Transição suave */
+    }
+
+    .lista-menu__container.active {
+      display: block; /* Mostra a lista quando ativa */
+      max-height: 300px; /* Altura máxima ao abrir */
+      padding: 10px; /* Espaçamento interno ao abrir */
+      overflow-y: auto; /* Adiciona rolagem vertical */
+    }
+
+    /* Estilos do swiper */
+    .swiper {
+      width: 100%; /* Largura do carrossel */
+      height: auto; /* Altura do carrossel ajustada automaticamente */
+      min-height: 150px; /* Altura mínima do carrossel */
+      margin-top: 20px; /* Espaçamento superior */
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; /* Alinha o texto abaixo da imagem */
+      width: 100px; /* Largura de cada slide */
+      height: auto; /* Altura do slide ajustada automaticamente */
+      transition: transform 0.3s; /* Efeito de transformação suave */
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    }
+
+    .swiper-slide img {
+      width: 100%; /* Ajusta a imagem para preencher o slide */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 10px; /* Bordas arredondadas nas imagens */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra nas imagens */
+    }
+
+    .swiper-slide .swiper-text {
+      margin-top: 5px; /* Espaçamento acima do texto */
+      text-align: center; /* Centraliza o texto */
+      font-size: 14px; /* Tamanho da fonte do texto */
+      color: #333; /* Cor do texto */
+    }
+
+    /* Estilo para os ícones */
+    .container__imagem {
+      width: 40px; /* Ajuste a largura do ícone */
+      height: auto; /* Mantém a proporção da imagem */
+      margin-right: 10px; /* Espaçamento à direita */
+    }
+
+    .cabeçalho {
+      display: flex;
+      align-items: center; /* Alinha verticalmente os itens */
+    }
+
+    /* Estilo para o texto abaixo ```html
+    /* Estilo para o texto abaixo do carrossel */
+    .texto-turmas {
+      text-align: center; /* Centraliza o texto */
+      font-size: 20px; /* Tamanho da fonte */
+      margin-top: 10px; /* Espaçamento superior */
+      position: relative; /* Para se manter dentro do contêiner */
+      z-index: 10; /* Garante que o texto fique acima do carrossel */
+    }
+
+    /* Contêiner do carrossel e texto */
+    .carrossel-container {
+      position: relative; /* Para que o texto acompanhe o carrossel */
+      background-color: #fff; /* Fundo branco para o contêiner */
+      padding: 20px; /* Espaçamento interno */
+      border-radius: 10px; /* Bordas arredondadas */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra no contêiner */
+    }
+
+    footer {
+      background-color: #4CAF50; /* Cor de fundo do rodapé */
+      color: white;
+      text-align: center; /* Centraliza o texto do rodapé */
+      padding: 10px 0; /* Espaçamento interno */
+    }
+  </style>
 </head>
 
 <body>
   <header class="cabeçalho">
     <div class="container">
-      <input type="checkbox" id="menu" class="container__botao">
+      <img src="img/NovosIcones/book-open-solid.svg" alt="Logo da Alurabooks" class="container__imagem">
+      <input type="checkbox" id="menu" class="container__botao" onchange="toggleMenu()">
       <label for="menu">
         <span class="cabeçalho__menu-hamburguer container__imagem"></span>
       </label>
       <ul class="lista-menu">
-        <li class="lista-menu__titulo">Categorias</li>
-        <li class="lista-menu__item">
-          <a href="#" class="lista-menu__link">Programação</a>
-        </li>
-        <li class="lista-menu__item">
-          <a href="#" class="lista-menu__link">Front-end</a>
-        </li>
-        <li class="lista-menu__item">
-          <a href="#" class="lista-menu__link">Infraestrutura</a>
-        </li>
-        <li class="lista-menu__item">
-          <a href="#" class="lista-menu__link">Business</a>
-        </li>
-        <li class="lista-menu__item">
-          <a href="#" class="lista-menu__link">Design & UX</a>
-        </li>
+        <li class="lista-menu__titulo">Guia Links</li>
+        <div class="lista-menu__container" id="menuContainer">
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/programacao" class="lista-menu__link">6°A</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/front-end" class="lista-menu__link">6° B</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/infraestrutura" class="lista-menu__link">7° ano</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/business" class="lista-menu__link">8°A</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">8°B</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">9° ano</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">1° ano</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">2° A</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">2°B</a>
+          </li>
+          <li class="lista-menu__item">
+            <a href="https://www.example.com/design-ux" class="lista-menu__link">3° ano</a>
+          </li>
+        </div>
       </ul>
-      <img src="img/NovosIcones/book-open-solid.svg" alt="Logo da Alurabooks" class="container__imagem">
     </div>
     <div class="container">
       <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos" class="container__imagem"></a>
@@ -49,33 +275,59 @@
 
   <section class="banner">
     <h2 class="banner__titulo">Sejam Bem-vindos ao MobileFirst.</h2>
-    <p class="banner__texto">Visamos escolher um elemento essencial não só para os alunos,mas também para os professores(as)</p>
-  </section>
-
-  <section class=”carrossel”>
+    <p class="banner__texto">Visamos escolher um elemento essencial não só para os alunos, mas também para os professores(as)</p>
+  </section ```html
+  <section class="carrossel-container">
     <h2 class="carrossel__titulo">Guias De Aprendizagem</h2>
     <div class="swiper">
       <div class="swiper-pagination"></div>
 
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/ApacheKafka.svg"
-            alt="Livro sobre apache kafka e spring boot da alura books"></div>
-        <div class="swiper-slide"><img src="img/Liderança.svg" alt="Livro sobre liderança em design da alura books">
+        <div class="swiper-slide">
+          <img src="img/6a.png" alt="Imagem 6°A">
+          <div class="swiper-text">6°A</div>
         </div>
-        <div class="swiper-slide"><img src="img/Javascript.svg" alt="Livro sobre javascript assertivo da alurabooks">
+        <div class="swiper-slide">
+          <img src="img/6b.png" alt="Imagem 6°B">
+          <div class="swiper-text">6°B</div>
         </div>
-        <div class="swiper-slide"><img src="img/Guia Front-end.svg" alt="Livro Guia front end"></div>
-        <div class="swiper-slide"><img src="img/Portugol.svg" alt="Livro sobre portugol"></div>
-        <div class="swiper-slide"><img src="img/Acessibilidade.svg" alt="livro sobre acessibilidade"></div>
+        <div class="swiper-slide">
+          <img src="img/7ano.png" alt="Imagem 7° ano">
+          <div class="swiper-text">7° ano</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/8a.png" alt="Imagem 8°A">
+          <div class="swiper-text">8°A</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/8b.png" alt="Imagem 8°B">
+          <div class="swiper-text">8°B</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/9ano.png" alt="Imagem 9° ano">
+          <div class="swiper-text">9° ano</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/1ano.png" alt="Imagem 1° ano">
+          <div class="swiper-text">1° ano</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/2a.png" alt="Imagem 2°A">
+          <div class="swiper-text">2°A</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/2b.png" alt="Imagem 2°B">
+          <div class="swiper-text">2°B</div>
+        </div>
+        <div class="swiper-slide">
+          <img src="img/3ano.png" alt="Imagem 3° ano">
+          <div class="swiper-text">3° ano</div>
+        </div>
       </div>
 
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-      </div>
-    </div>
-
-
 
   </section>
 
@@ -94,7 +346,20 @@
         el: ".swiper-pagination",
         type: "bullets",
       },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        hide: true,
+      },
     });
+
+    function toggleMenu() {
+      const menuContainer = document.getElementById('menuContainer');
+      menuContainer.classList.toggle('active');
+    }
   </script>
 </body>
 

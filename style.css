@@ -20,3 +20,10 @@ body {
     font-size: 16px;
     font-weight: 400;
 }
+
+.lista-menu__container {
+    max-height: 200px; /* Defina a altura máxima que você deseja */
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    border: 1px solid #ccc; /* Opcional: borda ao redor da lista */
+    padding: 10px; /* Opcional: espaço interno */
+}
